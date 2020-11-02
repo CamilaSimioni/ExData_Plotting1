@@ -39,3 +39,7 @@ legend("topright", lty=1, col=c("black","red","blue"),legend=c("Sub_metering_1",
 
 #Title
 title(main="Energy sub-metering")
+
+#save
+dev.off()
+
