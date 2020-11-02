@@ -29,3 +29,7 @@ hist(as.numeric(as.character(subpower1$Global_active_power)),col="red",main="Glo
 #title
 title(main="Global Active Power")
 
+
+#save
+dev.off()
+
