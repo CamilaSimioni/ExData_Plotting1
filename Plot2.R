@@ -36,3 +36,6 @@ plot(data_subpower_con$Time,as.numeric(as.character(data_subpower_con$Global_act
 
 #title
 title(main="Global Active Power Vs Time")
+
+#save
+dev.off()
