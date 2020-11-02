@@ -20,8 +20,7 @@ data_power_con <- read.table("./Pasta_2/household_power_consumption.txt",skip=1,
 names(data_power_con) <- c("Date","Time","Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3")
 subpower <- subset(data_power_con,data_power_con$Date=="1/2/2007" | data_power_con$Date =="2/2/2007")
 
-#Print in PNG
-png("plot4.png", width=480, height=480)
+
 
 #Transforming the Date and Time vars from characters into objects of type Date and POSIXlt alike:
 subpower$Date <- as.Date(subpower$Date, format="%d/%m/%Y")
@@ -34,9 +33,9 @@ par(mfrow=c(2,2))
 
 #Calling the basic plot function
 with(subpower,{
-  plot(subpower$Time,as.numeric(as.character(subpower_con$Global_active_power)),type="l",  xlab="",ylab="Global Active Power")  
-  plot(subpower$Time,as.numeric(as.character(subpower_con$Voltage)), type="l",xlab="datetime",ylab="Voltage")
-  plot(subpower$Time,subpower_con$Sub_metering_1,type="n",xlab="",ylab="Energy sub metering")
+  plot(subpower$Time,as.numeric(as.character(subpower$Global_active_power)),type="l",  xlab="",ylab="Global Active Power")  
+  plot(subpower$Time,as.numeric(as.character(subpower$Voltage)), type="l",xlab="datetime",ylab="Voltage")
+  plot(subpower$Time,subpower$Sub_metering_1,type="n",xlab="",ylab="Energy sub metering")
   with(subpower,lines(Time,as.numeric(as.character(Sub_metering_1))))
   with(subpower,lines(Time,as.numeric(as.character(Sub_metering_2)),col="red"))
   with(subpower,lines(Time,as.numeric(as.character(Sub_metering_3)),col="blue"))
@@ -44,7 +43,9 @@ with(subpower,{
   plot(subpower$Time,as.numeric(as.character(subpower$Global_reactive_power)),type="l",xlab="datetime",ylab="Global_reactive_power")
 })
 
-
+#Print in PNG
+png("plot4.png", width=480, height=480)
 #save
 dev.off()
+
 
